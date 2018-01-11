@@ -127,7 +127,11 @@ implementation of the dictionary would be nice.
 
 ## Contributing
 
-Fork -> Commit -> Spec -> Push -> Pull Request
+* Fork
+* Commit
+* Spec
+* Push
+* Pull Request
 
 
 ## Similar Projects
@@ -136,9 +140,14 @@ Fork -> Commit -> Spec -> Push -> Pull Request
 * [@jeresig](https://github.com/jeresig)'s [node-enamdict](https://github.com/jeresig/node-enamdict) an ENAMDIC reader for Node.js
 
 
-## Authors
+## Author
 
 * [@johnnyshields](https://github.com/johnnyshields)
+
+
+## Contributors
+
+* [@DaniG2k](https://github.com/DaniG2k)
 
 
 ## Copyright

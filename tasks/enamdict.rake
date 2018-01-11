@@ -20,7 +20,7 @@ namespace :enamdict do
     f.write(Zlib::GzipReader.open(open(uri)).read)
     f.close
 
-    puts "Downloaded to #{loc}"
+    puts "Downloaded to #{TMP_FILE}"
   end
 
   # Minification steps:
@@ -43,8 +43,7 @@ namespace :enamdict do
     name_types = %w[s p u g f m]
     skip_types = %w[h]
 
-    i = 0
-    j = 0
+    tot, kept = 0, 0
     out = File.open('bin/enamdict.min', 'w:utf-8')
     File.open(TMP_FILE, 'r:euc-jp') do |f|
       f.gets # skip header
@@ -55,13 +54,13 @@ namespace :enamdict do
         data_types = data[2].split(',')
         if (data_types & name_types).any? && !(data_types & skip_types).any? && !(%w[p u].include?(data[2]) && data[0].encode('utf-8') =~ /\p{Katakana}/)
           out.puts(data.join('|'))
-          j += 1
+          kept += 1
         end
-        i += 1
+        tot += 1
       end
     end
     out.close
 
-    puts "Minified! (#{j} out of #{i} lines kept)"
+    puts "Minified! (#{kept} out of #{tot} lines kept)"
   end
 end
