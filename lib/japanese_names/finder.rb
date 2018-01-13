@@ -7,8 +7,14 @@ module JapaneseNames
     # - kanji: String kanji to match
     # - kana:  String kana to match
     # - kanji: Array<Symbol> ENAMDICT flags to match
-    def find(*args)
-      backend.find(*args)
+    def find(params)
+      backend.find(params)
+    end
+
+    %w[kanji kana].each do |type|
+      define_method("find_by_#{type}") do |param|
+        backend.send("find_by_#{type}", param)
+      end
     end
 
     private

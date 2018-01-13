@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 namespace :enamdict do
-  TMP_FILE = 'tmp/enamdict'.freeze
+  TMP_FILE = 'tmp/enamdict'
 
   desc 'Downloads and compacts the ENAMDICT file'
   task refresh: %w[download minify]
@@ -43,7 +43,8 @@ namespace :enamdict do
     name_types = %w[s p u g f m]
     skip_types = %w[h]
 
-    tot, kept = 0, 0
+    tot  = 0
+    kept = 0
     out = File.open('bin/enamdict.min', 'w:utf-8')
     File.open(TMP_FILE, 'r:euc-jp') do |f|
       f.gets # skip header
@@ -52,7 +53,7 @@ namespace :enamdict do
         next unless data
         data[1] ||= data[0]
         data_types = data[2].split(',')
-        if (data_types & name_types).any? && !(data_types & skip_types).any? && !(%w[p u].include?(data[2]) && data[0].encode('utf-8') =~ /\p{Katakana}/)
+        if (data_types & name_types).any? && (data_types & skip_types).none? && !(%w[p u].include?(data[2]) && data[0].encode('utf-8') =~ /\p{Katakana}/)
           out.puts(data.join('|'))
           kept += 1
         end

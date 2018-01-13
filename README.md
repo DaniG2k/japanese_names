@@ -9,7 +9,7 @@ This library comes packaged with a compacted version of the [ENAMDICT file](http
 at `bin/enamdict.min`. Refer to *Rake Tasks* below for how this file is constructed.
 
 
-### Finder.find
+### Finder#find
 
 Provides a structured query interface to access ENAMDICT data.
 
@@ -27,8 +27,8 @@ Provides a structured query interface to access ENAMDICT data.
 
 where options are:
 
-* `kanji`: The kanji name string to match. Regex syntax suppported. Either `:kanji` or `:kana` must be specified.
-* `kana`:  The kana name string to match. Regex syntax suppported.
+* `kanji`: The kanji name string to match. Regex syntax supported. Either `:kanji` or `:kana` must be specified.
+* `kana`:  The kana name string to match. Regex syntax supported.
 * `flags`: The flag char or array of flag chars to match. Refer to [ENAMDIC documentation](http://www.csse.monash.edu.au/~jwb/enamdict_doc.html).
 Additionally constants `JapaneseNames::Enamdict::NAME_SURNAME` and `JapaneseNames::Enamdict::NAME_GIVEN` may be used.
 
@@ -140,13 +140,9 @@ implementation of the dictionary would be nice.
 * [@jeresig](https://github.com/jeresig)'s [node-enamdict](https://github.com/jeresig/node-enamdict) an ENAMDIC reader for Node.js
 
 
-## Author
+## Authors
 
 * [@johnnyshields](https://github.com/johnnyshields)
-
-
-## Contributors
-
 * [@DaniG2k](https://github.com/DaniG2k)
 
 
